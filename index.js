@@ -43,10 +43,24 @@ app.get('/getCertainBlog/:id', (req, res) => {
   // console.log(id);
   blogCollection.find({_id: id})
   .toArray((err, blog) => {
-    // console.log(blog[0]);
+    console.log(blog[0]);
     res.send(blog[0])
   })
   })
+
+
+  app.delete('/deleteBlog:id', (req, res) => {
+    const objectId = ObjectID(req.params.id);
+    console.log(objectId);
+  
+    blogCollection.deleteOne({_id: objectId})
+    .then((err, document) => res.send({
+      success : true
+    }))
+  
+  })
+
+
 
 
 
