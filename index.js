@@ -49,20 +49,15 @@ app.get('/getCertainBlog/:id', (req, res) => {
   })
 
 
-  app.delete('/deleteBlog:id', (req, res) => {
-    const objectId = ObjectID(req.params.id);
-    console.log(objectId);
-  
-    blogCollection.deleteOne({_id: objectId})
-    .then((err, document) => res.send({
-      success : true
+  app.delete('/deleteBlog/:id', (req, res) =>{
+
+    const id = ObjectID(req.params.id);
+    console.log('delete text', id);
+    blogCollection.deleteOne({_id: id})
+    .then((err, documents) => res.send({
+      success: true
     }))
-  
   })
-
-
-
-
 
 });
 
