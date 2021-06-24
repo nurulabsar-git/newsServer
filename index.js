@@ -43,7 +43,7 @@ app.get('/getCertainBlog/:id', (req, res) => {
   // console.log(id);
   blogCollection.find({_id: id})
   .toArray((err, blog) => {
-    // console.log(orders[0]);
+    // console.log(blog[0]);
     res.send(blog[0])
   })
   })
